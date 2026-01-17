@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Progress Tracker</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --success: #3fb950;
+      --warning: #d29922;
+      --danger: #f85149;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 { font-size: 1.5rem; font-weight: 600; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
+    h3 { font-size: 1rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem; }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    select, button {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+
+    select:hover, button:hover {
+      border-color: var(--accent);
+    }
+
+    .controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .controls label {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .stat-diff {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .stat-diff.positive { color: var(--success); }
+    .stat-diff.negative { color: var(--danger); }
+    .stat-diff.neutral { color: var(--text-muted); }
+
+    .repo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .repo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .repo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .repo-name {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .repo-name:hover { text-decoration: underline; }
+
+    .repo-description {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .repo-stats {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.875rem;
+    }
+
+    .repo-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--text-muted);
+    }
+
+    .repo-stat strong { color: var(--text); }
+
+    .diff-badge {
+      font-size: 0.75rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 4px;
+      margin-left: 0.25rem;
+    }
+
+    .diff-badge.positive { background: rgba(63, 185, 80, 0.2); color: var(--success); }
+    .diff-badge.negative { background: rgba(248, 81, 73, 0.2); color: var(--danger); }
+
+    .active-badge {
+      background: rgba(63, 185, 80, 0.2);
+      color: var(--success);
+      font-size: 0.75rem;
+      padding: 0.125rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .loading, .error {
+      text-align: center;
+      padding: 4rem;
+      color: var(--text-muted);
+    }
+
+    .error { color: var(--danger); }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem;
+      color: var(--text-muted);
+    }
+
+    .team-badge {
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📊 GitHub Progress Tracker</h1>
+    <nav id="nav"></nav>
+  </header>
+
+  <div class="controls" id="controls"></div>
+  <main id="main">
+    <div class="loading">Loading...</div>
+  </main>
+
+  <footer>
+    Data updated weekly via <a href="https://github.com/actions">GitHub Actions</a>
+  </footer>
+
+  <script>
+    // ============ State ============
+    const state = {
+      dates: [],
+      templates: [],
+      currentDate: null,
+      compareDate: null,
+      currentTemplate: null,
+      data: {},
+      templateData: {},
+    };
+
+    // ============ Routing ============
+    function parseRoute() {
+      const hash = window.location.hash.slice(2) || '';
+      const parts = hash.split('/').filter(Boolean);
+      
+      let template = null;
+      let date = null;
+      let compareDate = null;
+
+      for (let i = 0; i < parts.length; i++) {
+        const part = parts[i];
+        if (part === 'diff' && parts[i + 1]) {
+          compareDate = parts[i + 1];
+          i++;
+        } else if (part.match(/^\d{4}-\d{2}-\d{2}$/)) {
+          date = part;
+        } else {
+          template = part;
+        }
+      }
+
+      return { template, date, compareDate };
+    }
+
+    function buildRoute(template, date, compareDate) {
+      const parts = [];
+      if (template) parts.push(template);
+      if (date) parts.push(date);
+      if (compareDate) parts.push('diff', compareDate);
+      return '#/' + parts.join('/');
+    }
+
+    function navigate(template, date, compareDate) {
+      window.location.hash = buildRoute(template, date, compareDate);
+    }
+
+    // ============ Data Fetching ============
+    async function fetchJSON(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to fetch ${url}`);
+      return res.json();
+    }
+
+    async function loadIndex() {
+      const [dataIndex, templatesIndex] = await Promise.all([
+        fetchJSON('data/index.json'),
+        fetchJSON('templates/index.json'),
+      ]);
+      state.dates = dataIndex.dates || [];
+      state.templates = templatesIndex.templates || [];
+    }
+
+    async function loadData(date) {
+      if (!state.data[date]) {
+        state.data[date] = await fetchJSON(`data/${date}.json`);
+      }
+      return state.data[date];
+    }
+
+    async function loadTemplate(templateId) {
+      if (!state.templateData[templateId]) {
+        state.templateData[templateId] = await fetchJSON(`templates/${templateId}.json`);
+      }
+      return state.templateData[templateId];
+    }
+
+    // ============ Filtering ============
+    function filterData(data, template) {
+      if (!template) return data;
+
+      const repoSet = new Set(template.repos || []);
+      const filtered = {
+        ...data,
+        repositories: data.repositories.filter(r => repoSet.has(r.name)),
+      };
+
+      // Recalculate totals
+      filtered.totals = {
+        repositories: filtered.repositories.length,
+        commits: filtered.repositories.reduce((sum, r) => sum + (r.activity?.commits || 0), 0),
+        prs_opened: filtered.repositories.reduce((sum, r) => sum + (r.activity?.prs_opened || 0), 0),
+        prs_merged: filtered.repositories.reduce((sum, r) => sum + (r.activity?.prs_merged || 0), 0),
+        issues_opened: filtered.repositories.reduce((sum, r) => sum + (r.activity?.issues_opened || 0), 0),
+        issues_closed: filtered.repositories.reduce((sum, r) => sum + (r.activity?.issues_closed || 0), 0),
+        total_stars: filtered.repositories.reduce((sum, r) => sum + (r.state?.stars || 0), 0),
+        total_contributors: new Set(filtered.repositories.flatMap(r => r.authors || [])).size,
+      };
+
+      filtered.active_repos = filtered.repositories
+        .filter(r => (r.activity?.commits || 0) > 0 || (r.activity?.prs_opened || 0) > 0)
+        .map(r => r.name);
+
+      return filtered;
+    }
+
+    // ============ Diffing ============
+    function computeDiff(current, previous) {
+      if (!previous) return null;
+
+      const diff = {
+        totals: {},
+        repositories: {},
+      };
+
+      // Diff totals
+      for (const key of Object.keys(current.totals)) {
+        const curr = current.totals[key] || 0;
+        const prev = previous.totals[key] || 0;
+        diff.totals[key] = curr - prev;
+      }
+
+      // Diff per repo
+      const prevRepoMap = Object.fromEntries(previous.repositories.map(r => [r.name, r]));
+      for (const repo of current.repositories) {
+        const prev = prevRepoMap[repo.name];
+        if (prev) {
+          diff.repositories[repo.name] = {
+            activity: {
+              commits: (repo.activity?.commits || 0) - (prev.activity?.commits || 0),
+              prs_opened: (repo.activity?.prs_opened || 0) - (prev.activity?.prs_opened || 0),
+              prs_merged: (repo.activity?.prs_merged || 0) - (prev.activity?.prs_merged || 0),
+              issues_opened: (repo.activity?.issues_opened || 0) - (prev.activity?.issues_opened || 0),
+              issues_closed: (repo.activity?.issues_closed || 0) - (prev.activity?.issues_closed || 0),
+            },
+            state: {
+              stars: (repo.state?.stars || 0) - (prev.state?.stars || 0),
+              forks: (repo.state?.forks || 0) - (prev.state?.forks || 0),
+            },
+          };
+        }
+      }
+
+      return diff;
+    }
+
+    // ============ Rendering ============
+    function renderNav() {
+      const nav = document.getElementById('nav');
+      const { template } = parseRoute();
+
+      nav.innerHTML = `
+        <select id="template-select">
+          <option value="">All Teams</option>
+          ${state.templates.map(t => 
+            `<option value="${t.id}" ${t.id === template ? 'selected' : ''}>${t.name}</option>`
+          ).join('')}
+        </select>
+      `;
+
+      nav.querySelector('#template-select').addEventListener('change', (e) => {
+        const { date, compareDate } = parseRoute();
+        navigate(e.target.value || null, date, compareDate);
+      });
+    }
+
+    function renderControls() {
+      const controls = document.getElementById('controls');
+      const { template, date, compareDate } = parseRoute();
+      const currentDate = date || state.dates[0];
+
+      controls.innerHTML = `
+        <label>
+          Date:
+          <select id="date-select">
+            ${state.dates.map(d => 
+              `<option value="${d}" ${d === currentDate ? 'selected' : ''}>${d}</option>`
+            ).join('')}
+          </select>
+        </label>
+        <label>
+          Compare with:
+          <select id="compare-select">
+            <option value="">No comparison</option>
+            ${state.dates.filter(d => d !== currentDate).map(d => 
+              `<option value="${d}" ${d === compareDate ? 'selected' : ''}>${d}</option>`
+            ).join('')}
+          </select>
+        </label>
+      `;
+
+      controls.querySelector('#date-select').addEventListener('change', (e) => {
+        navigate(template, e.target.value, compareDate);
+      });
+
+      controls.querySelector('#compare-select').addEventListener('change', (e) => {
+        navigate(template, currentDate, e.target.value || null);
+      });
+    }
+
+    function formatDiff(value) {
+      if (value === 0) return '';
+      const sign = value > 0 ? '+' : '';
+      const cls = value > 0 ? 'positive' : 'negative';
+      return `<span class="diff-badge ${cls}">${sign}${value}</span>`;
+    }
+
+    function renderStats(data, diff) {
+      const stats = [
+        { key: 'repositories', label: 'Repositories' },
+        { key: 'commits', label: 'Commits' },
+        { key: 'prs_merged', label: 'PRs Merged' },
+        { key: 'issues_closed', label: 'Issues Closed' },
+        { key: 'total_stars', label: 'Total Stars' },
+        { key: 'total_contributors', label: 'Contributors' },
+      ];
+
+      return `
+        <div class="stats-grid">
+          ${stats.map(s => `
+            <div class="stat-card">
+              <div class="stat-value">${data.totals[s.key] || 0}${diff ? formatDiff(diff.totals[s.key] || 0) : ''}</div>
+              <div class="stat-label">${s.label}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderRepos(data, diff, template) {
+      if (!data.repositories.length) {
+        return '<div class="empty-state">No repositories match the current filter.</div>';
+      }
+
+      const highlight = new Set(template?.metrics?.highlight || []);
+      const hide = new Set(template?.metrics?.hide || []);
+
+      return `
+        <h2>Repositories</h2>
+        <div class="repo-list">
+          ${data.repositories.map(repo => {
+            const repoDiff = diff?.repositories[repo.name];
+            const isActive = data.active_repos?.includes(repo.name);
+
+            return `
+              <div class="repo-card">
+                <div class="repo-header">
+                  <a class="repo-name" href="${repo.url}" target="_blank">${repo.name}</a>
+                  ${isActive ? '<span class="active-badge">Active</span>' : ''}
+                </div>
+                ${repo.description ? `<div class="repo-description">${repo.description}</div>` : ''}
+                <div class="repo-stats">
+                  ${!hide.has('commits') ? `
+                    <span class="repo-stat ${highlight.has('commits') ? 'highlighted' : ''}">
+                      <strong>${repo.activity?.commits || 0}</strong> commits
+                      ${repoDiff ? formatDiff(repoDiff.activity?.commits || 0) : ''}
+                    </span>
+                  ` : ''}
+                  ${!hide.has('prs_merged') ? `
+                    <span class="repo-stat">
+                      <strong>${repo.activity?.prs_merged || 0}</strong> PRs merged
+                      ${repoDiff ? formatDiff(repoDiff.activity?.prs_merged || 0) : ''}
+                    </span>
+                  ` : ''}
+                  ${!hide.has('issues_closed') ? `
+                    <span class="repo-stat">
+                      <strong>${repo.activity?.issues_closed || 0}</strong> issues closed
+                      ${repoDiff ? formatDiff(repoDiff.activity?.issues_closed || 0) : ''}
+                    </span>
+                  ` : ''}
+                  ${!hide.has('stars') ? `
+                    <span class="repo-stat">
+                      <strong>${repo.state?.stars || 0}</strong> stars
+                      ${repoDiff ? formatDiff(repoDiff.state?.stars || 0) : ''}
+                    </span>
+                  ` : ''}
+                  ${!hide.has('contributors') ? `
+                    <span class="repo-stat">
+                      <strong>${repo.state?.contributors || 0}</strong> contributors
+                    </span>
+                  ` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    async function render() {
+      const main = document.getElementById('main');
+      const { template, date, compareDate } = parseRoute();
+
+      try {
+        if (!state.dates.length) {
+          main.innerHTML = '<div class="empty-state">No data available yet. Run the workflow to collect data.</div>';
+          return;
+        }
+
+        const currentDate = date || state.dates[0];
+        
+        // Load data
+        let data = await loadData(currentDate);
+        let templateConfig = null;
+
+        if (template) {
+          templateConfig = await loadTemplate(template);
+          data = filterData(data, templateConfig);
+        }
+
+        // Load comparison data if needed
+        let diff = null;
+        if (compareDate) {
+          let compareData = await loadData(compareDate);
+          if (template) {
+            compareData = filterData(compareData, templateConfig);
+          }
+          diff = computeDiff(data, compareData);
+        }
+
+        // Render
+        main.innerHTML = `
+          ${template ? `<div style="margin-bottom: 1rem;"><span class="team-badge">${templateConfig.name}</span> <span style="color: var(--text-muted); font-size: 0.875rem;">${templateConfig.description || ''}</span></div>` : ''}
+          ${compareDate ? `<h3>Comparing ${currentDate} with ${compareDate}</h3>` : `<h3>Week of ${currentDate}</h3>`}
+          ${renderStats(data, diff)}
+          ${renderRepos(data, diff, templateConfig)}
+        `;
+
+      } catch (err) {
+        console.error(err);
+        main.innerHTML = `<div class="error">Error loading data: ${err.message}</div>`;
+      }
+    }
+
+    // ============ Init ============
+    async function init() {
+      try {
+        await loadIndex();
+        renderNav();
+        renderControls();
+        await render();
+      } catch (err) {
+        console.error(err);
+        document.getElementById('main').innerHTML = `<div class="error">Failed to initialize: ${err.message}</div>`;
+      }
+    }
+
+    window.addEventListener('hashchange', async () => {
+      renderNav();
+      renderControls();
+      await render();
+    });
+
+    init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "templates": [
+    {
+      "id": "team-alpha",
+      "name": "Team Alpha",
+      "description": "Frontend projects"
+    },
+    {
+      "id": "team-beta",
+      "name": "Team Beta", 
+      "description": "Backend infrastructure"
+    }
+  ]
+}

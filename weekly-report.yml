@@ -1,0 +1,58 @@
+name: Weekly Progress Report
+
+on:
+  schedule:
+    # Runs every Monday at 9:00 UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  collect-and-publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Fetch GitHub data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: python scripts/fetch.py
+
+      - name: Aggregate data
+        run: python scripts/aggregate.py
+
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Update data index
+        run: python scripts/update_index.py
+
+      - name: Commit data to docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/
+          git commit -m "Add weekly data for ${{ steps.date.outputs.date }}" || echo "No changes to commit"
+          git push
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ steps.date.outputs.date }}" \
+            --title "Weekly Report ${{ steps.date.outputs.date }}" \
+            --notes "Automated weekly progress snapshot" \
+            docs/data/${{ steps.date.outputs.date }}.json
