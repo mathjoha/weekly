@@ -55,37 +55,41 @@ def fetch_repo_data(owner: str, repo: str, config: dict) -> dict:
         "updated_at": repo_info["updated_at"],
     }
 
-    # Recent commits (from default branch + dev + most recently updated branch)
+    # Recent commits (from default branch + dev + branch most ahead of main)
     if "commits" in config.get("metrics", []):
         commits_url = f"{base_url}/commits"
-        branches_to_check = {data["default_branch"]}
+        default_branch = data["default_branch"]
+        branches_to_check = {default_branch}
 
-        # Get branches to find 'dev' and most recently updated
+        # Get branches to find 'dev' and most recently active branch
         branches_url = f"{base_url}/branches"
         response = requests.get(branches_url, headers=headers, params={"per_page": 30})
         if response.status_code == 200:
             branches = response.json()
-            # Add 'dev' if it exists
             branch_names = {b["name"] for b in branches}
+
+            # Add 'dev' if it exists
             if "dev" in branch_names:
                 branches_to_check.add("dev")
-            # Find most recently updated branch (check up to 10 branches to limit API calls)
-            if branches:
-                most_recent = None
-                most_recent_date = None
-                for branch in branches[:10]:
-                    if branch["name"] in branches_to_check:
-                        continue  # Skip branches we're already checking
-                    commit_url = branch.get("commit", {}).get("url")
-                    if commit_url:
-                        resp = requests.get(commit_url, headers=headers)
-                        if resp.status_code == 200:
-                            commit_date = resp.json().get("commit", {}).get("committer", {}).get("date")
-                            if commit_date and (most_recent_date is None or commit_date > most_recent_date):
-                                most_recent_date = commit_date
-                                most_recent = branch["name"]
-                if most_recent:
-                    branches_to_check.add(most_recent)
+
+            # Get commit dates for branches (excluding main/dev)
+            branches_with_dates = []
+            for branch in branches:
+                branch_name = branch["name"]
+                if branch_name in branches_to_check:
+                    continue
+                # Fetch commit date
+                commit_url = branch.get("commit", {}).get("url")
+                if commit_url:
+                    resp = requests.get(commit_url, headers=headers)
+                    if resp.status_code == 200:
+                        commit_date = resp.json().get("commit", {}).get("committer", {}).get("date", "")
+                        branches_with_dates.append((branch_name, commit_date))
+
+            # Add most recently active branch
+            if branches_with_dates:
+                branches_with_dates.sort(key=lambda x: x[1], reverse=True)
+                branches_to_check.add(branches_with_dates[0][0])
 
         # Fetch commits from all branches, deduplicate by SHA
         seen_shas = set()
