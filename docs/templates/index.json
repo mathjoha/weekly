@@ -1,5 +1,28 @@
 {
-  "dates": ["2026-01-19"],
-  "latest": "2026-01-19",
-  "count": 1
+  "templates": [
+    {
+      "id": "team-alpha",
+      "name": "Team Alpha"
+    },
+    {
+      "id": "team-beta",
+      "name": "Team Beta"
+    },
+    {
+      "id": "ToK",
+      "name": "ToK"
+    },
+    {
+      "id": "SWINNO",
+      "name": "SWINNO"
+    },
+    {
+      "id": "cg",
+      "name": "ContentiousGatherings"
+    },
+    {
+      "id": "jadb",
+      "name": "JADB"
+    }
+  ]
 }

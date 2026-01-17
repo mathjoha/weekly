@@ -1,0 +1,13 @@
+{
+  "id": "SWINNO",
+  "name": "SWINNO",
+  "description": "SWINNO project repositories",
+  "repos": [],
+  "patterns": [
+    "swinnoproject/*"
+  ],
+  "metrics": {
+    "highlight": ["commits", "prs_merged"],
+    "hide": []
+  }
+}

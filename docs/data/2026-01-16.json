@@ -1,0 +1,479 @@
+{
+  "date": "2026-01-17",
+  "fetched_at": "2026-01-17T11:09:36.675240Z",
+  "totals": {
+    "repositories": 23,
+    "commits": 0,
+    "prs_opened": 0,
+    "prs_merged": 0,
+    "issues_opened": 1,
+    "issues_closed": 0,
+    "total_stars": 6,
+    "total_contributors": 0
+  },
+  "active_repos": [
+    "DigitalHistory-Lund/ToK-explorer"
+  ],
+  "repositories": [
+    {
+      "name": "ContentiousGatherings/.github",
+      "url": "https://github.com/ContentiousGatherings/.github",
+      "description": "Profile repository",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/dashboard-mockup",
+      "url": "https://github.com/ContentiousGatherings/dashboard-mockup",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/website",
+      "url": "https://github.com/ContentiousGatherings/website",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/.github",
+      "url": "https://github.com/DigitalHistory-Lund/.github",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/ToK-Preparer",
+      "url": "https://github.com/DigitalHistory-Lund/ToK-Preparer",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/ToK-Reader",
+      "url": "https://github.com/DigitalHistory-Lund/ToK-Reader",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/ToK-explorer",
+      "url": "https://github.com/DigitalHistory-Lund/ToK-explorer",
+      "description": "Exploring the data for 'Tal om Kvinnor' (ToK).",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 1,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 1,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/elam_stm_prep",
+      "url": "https://github.com/DigitalHistory-Lund/elam_stm_prep",
+      "description": "An attempt at creating an interface between a dymamic python-based pre-processing and the R based stm (Structural Topic Modelling) library.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/kb-trend",
+      "url": "https://github.com/DigitalHistory-Lund/kb-trend",
+      "description": "Retrieve page-hit trends from the Swedish National Library's API",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "JobAdsData/HISCOTrend",
+      "url": "https://github.com/JobAdsData/HISCOTrend",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "JobAdsData/JADB-37040",
+      "url": "https://github.com/JobAdsData/JADB-37040",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "JobAdsData/YouthTrend",
+      "url": "https://github.com/JobAdsData/YouthTrend",
+      "description": "Some visualisations of advertisements for youth-jobs",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "JobAdsData/jadb-1-timelines",
+      "url": "https://github.com/JobAdsData/jadb-1-timelines",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/Kultur_Personalplaneraren",
+      "url": "https://github.com/mathjoha/Kultur_Personalplaneraren",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/hanoi",
+      "url": "https://github.com/mathjoha/hanoi",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/datasette-lite",
+      "url": "https://github.com/swinnoproject/datasette-lite",
+      "description": "Metadata file for running SWINNO in Datasette(Lite)",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 1,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/experimental-dashboard",
+      "url": "https://github.com/swinnoproject/experimental-dashboard",
+      "description": "Repo for publishing experimental dashboard built with Quarto and OJS",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/living_codebook",
+      "url": "https://github.com/swinnoproject/living_codebook",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/revealjs-theme",
+      "url": "https://github.com/swinnoproject/revealjs-theme",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 0
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/source_organizer",
+      "url": "https://github.com/swinnoproject/source_organizer",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/swinno_revealjs",
+      "url": "https://github.com/swinnoproject/swinno_revealjs",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/swinnotools-R",
+      "url": "https://github.com/swinnoproject/swinnotools-R",
+      "description": "R package of tools to work with SWINNO data",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/website",
+      "url": "https://github.com/swinnoproject/website",
+      "description": "This repo contains the quarto generated website of the SWINNO project.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 7
+      },
+      "authors": []
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "jadb",
+  "name": "JADB",
+  "description": "Job Ads DataBase",
+  "repos": [],
+  "patterns": [
+    "JobAdsData*"
+  ],
+  "metrics": {
+    "highlight": ["commits", "prs_merged"],
+    "hide": []
+  }
+}

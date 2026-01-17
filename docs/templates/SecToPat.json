@@ -1,0 +1,13 @@
+{
+  "id": "stp",
+  "name": "SecToPat",
+  "description": "Secrets",
+  "repos": [],
+  "patterns": [
+    "DigitalHistory-Lund/SecToPat-*"
+  ],
+  "metrics": {
+    "highlight": ["commits", "prs_merged"],
+    "hide": []
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ToK",
+  "name": "ToK",
+  "description": "Tal om Kvinnor",
+  "repos": [],
+  "patterns": [
+    "DigitalHistory-Lund/ToK-*"
+  ],
+  "metrics": {
+    "highlight": ["commits", "prs_merged"],
+    "hide": []
+  }
+}

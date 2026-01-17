@@ -1,0 +1,13 @@
+{
+  "id": "cg",
+  "name": "ContentiousGatherings",
+  "description": "ContentiousGatherings project repositories",
+  "repos": [],
+  "patterns": [
+    "ContentiousGatherings/*"
+  ],
+  "metrics": {
+    "highlight": ["commits", "prs_merged"],
+    "hide": []
+  }
+}

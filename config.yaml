@@ -1,0 +1,31 @@
+# Configuration for GitHub Progress Tracker
+
+# Organizations to track (all public repos are automatically included)
+organizations:
+  - ContentiousGatherings
+  - DigitalHistory-Lund
+  - JobAdsData
+  - swinnoproject
+
+# GitHub users to track (all public repos are automatically included)
+users:
+  - mathjoha
+
+# Whitelist: private repos to explicitly include (owner/repo format)
+whitelist:
+   - "ContentiousGatherings/*"
+
+# Blacklist: repos to exclude (owner/repo format, supports glob patterns)
+blacklist:
+  - "*/.*"  # Exclude .github and other dot-repos
+  - "*/website*"  # Exclude .github and other dot-repos
+
+# Metrics to collect per repository
+metrics:
+  - commits
+  - pull_requests
+  - issues
+  - contributors
+
+# Time window for activity metrics (days)
+activity_window: 7

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Fetch repository data from GitHub API."""
 
+import fnmatch
 import json
 import os
 from datetime import datetime, timedelta
@@ -46,6 +47,7 @@ def fetch_repo_data(owner: str, repo: str, config: dict) -> dict:
         "name": repo_info["full_name"],
         "description": repo_info.get("description"),
         "url": repo_info["html_url"],
+        "homepage": repo_info.get("homepage") or None,
         "stars": repo_info["stargazers_count"],
         "forks": repo_info["forks_count"],
         "open_issues": repo_info["open_issues_count"],
@@ -53,16 +55,53 @@ def fetch_repo_data(owner: str, repo: str, config: dict) -> dict:
         "updated_at": repo_info["updated_at"],
     }
     
-    # Recent commits
+    # Recent commits (from default branch + dev + most recently updated branch)
     if "commits" in config.get("metrics", []):
         commits_url = f"{base_url}/commits"
-        response = requests.get(commits_url, headers=headers, params={"since": since, "per_page": 100})
+        branches_to_check = {data["default_branch"]}
+
+        # Get branches to find 'dev' and most recently updated
+        branches_url = f"{base_url}/branches"
+        response = requests.get(branches_url, headers=headers, params={"per_page": 30})
         if response.status_code == 200:
-            commits = response.json()
-            data["commits_this_week"] = len(commits)
-            data["commit_authors"] = list(set(
-                c["commit"]["author"]["name"] for c in commits if c.get("commit", {}).get("author")
-            ))
+            branches = response.json()
+            # Add 'dev' if it exists
+            branch_names = {b["name"] for b in branches}
+            if "dev" in branch_names:
+                branches_to_check.add("dev")
+            # Find most recently updated branch (check up to 10 branches to limit API calls)
+            if branches:
+                most_recent = None
+                most_recent_date = None
+                for branch in branches[:10]:
+                    if branch["name"] in branches_to_check:
+                        continue  # Skip branches we're already checking
+                    commit_url = branch.get("commit", {}).get("url")
+                    if commit_url:
+                        resp = requests.get(commit_url, headers=headers)
+                        if resp.status_code == 200:
+                            commit_date = resp.json().get("commit", {}).get("committer", {}).get("date")
+                            if commit_date and (most_recent_date is None or commit_date > most_recent_date):
+                                most_recent_date = commit_date
+                                most_recent = branch["name"]
+                if most_recent:
+                    branches_to_check.add(most_recent)
+
+        # Fetch commits from all branches, deduplicate by SHA
+        seen_shas = set()
+        all_commits = []
+        for branch in branches_to_check:
+            response = requests.get(commits_url, headers=headers, params={"sha": branch, "since": since, "per_page": 100})
+            if response.status_code == 200:
+                for commit in response.json():
+                    if commit["sha"] not in seen_shas:
+                        seen_shas.add(commit["sha"])
+                        all_commits.append(commit)
+
+        data["commits_this_week"] = len(all_commits)
+        data["commit_authors"] = list(set(
+            c["commit"]["author"]["name"] for c in all_commits if c.get("commit", {}).get("author")
+        ))
     
     # Recent pull requests
     if "pull_requests" in config.get("metrics", []):
@@ -101,41 +140,80 @@ def fetch_repo_data(owner: str, repo: str, config: dict) -> dict:
     return data
 
 
-def fetch_org_repos(org: str, config: dict) -> list[str]:
-    """Fetch all repository names for an organization."""
+def fetch_org_repos(org: str) -> list[str]:
+    """Fetch all public repository names for an organization."""
     headers = get_headers()
     url = f"https://api.github.com/orgs/{org}/repos"
     repos = []
     page = 1
-    
+
     while True:
-        response = requests.get(url, headers=headers, params={"per_page": 100, "page": page})
+        response = requests.get(url, headers=headers, params={"per_page": 100, "page": page, "type": "public"})
         response.raise_for_status()
         page_repos = response.json()
-        
+
         if not page_repos:
             break
-            
+
         repos.extend([r["full_name"] for r in page_repos if not r["archived"]])
         page += 1
-    
+
     return repos
+
+
+def fetch_user_repos(user: str) -> list[str]:
+    """Fetch all public repository names for a user."""
+    headers = get_headers()
+    url = f"https://api.github.com/users/{user}/repos"
+    repos = []
+    page = 1
+
+    while True:
+        response = requests.get(url, headers=headers, params={"per_page": 100, "page": page, "type": "public"})
+        response.raise_for_status()
+        page_repos = response.json()
+
+        if not page_repos:
+            break
+
+        repos.extend([r["full_name"] for r in page_repos if not r["archived"]])
+        page += 1
+
+    return repos
+
+
+def matches_pattern(repo_name: str, pattern: str) -> bool:
+    """Check if repo name matches a glob pattern."""
+    return fnmatch.fnmatch(repo_name, pattern)
 
 
 def main():
     """Main entry point."""
     config = load_config()
-    exclude = set(config.get("exclude", []))
-    
-    # Gather all repos to fetch
-    all_repos = set(config.get("repositories", []))
-    
+    blacklist = config.get("blacklist", [])
+    whitelist = set(config.get("whitelist", []))
+
+    # Gather all public repos from orgs and users
+    all_repos = set()
+
     for org in config.get("organizations", []):
-        org_repos = fetch_org_repos(org, config)
+        print(f"Fetching repos from org: {org}")
+        org_repos = fetch_org_repos(org)
         all_repos.update(org_repos)
-    
-    # Remove excluded repos
-    all_repos -= exclude
+
+    for user in config.get("users", []):
+        print(f"Fetching repos from user: {user}")
+        user_repos = fetch_user_repos(user)
+        all_repos.update(user_repos)
+
+    # Add whitelisted private repos
+    all_repos.update(whitelist)
+
+    # Remove blacklisted repos (supports patterns)
+    all_repos = {
+        repo for repo in all_repos
+        if not any(matches_pattern(repo, pattern) for pattern in blacklist)
+    }
     
     # Fetch data for each repo
     results = []

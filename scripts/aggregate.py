@@ -23,6 +23,7 @@ def aggregate(raw: dict) -> dict:
         repo_summaries.append({
             "name": repo["name"],
             "url": repo["url"],
+            "homepage": repo.get("homepage"),
             "description": repo.get("description"),
             "activity": {
                 "commits": repo.get("commits_this_week", 0),
@@ -49,7 +50,7 @@ def aggregate(raw: dict) -> dict:
         "prs_merged": sum(r.get("prs_merged_this_week", 0) for r in repos),
         "issues_opened": sum(r.get("issues_opened_this_week", 0) for r in repos),
         "issues_closed": sum(r.get("issues_closed_this_week", 0) for r in repos),
-        "total_stars": sum(r.get("stars", 0) for r in repos),
+        "total_open": sum(r.get("issues_open", 0) + r.get("prs_open", 0) for r in repos),
         "total_contributors": len(set(
             author for r in repos for author in r.get("commit_authors", [])
         )),

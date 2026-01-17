@@ -306,13 +306,30 @@
     }
 
     // ============ Filtering ============
+    function matchesPattern(repoName, pattern) {
+      // Convert glob pattern to regex: * matches any chars, ? matches single char
+      const regex = new RegExp('^' + pattern
+        .replace(/[.+^${}()|[\]\\]/g, '\\$&')  // Escape special chars
+        .replace(/\*/g, '.*')                   // * -> .*
+        .replace(/\?/g, '.')                    // ? -> .
+        + '$');
+      return regex.test(repoName);
+    }
+
     function filterData(data, template) {
       if (!template) return data;
 
       const repoSet = new Set(template.repos || []);
+      const patterns = template.patterns || [];
+
       const filtered = {
         ...data,
-        repositories: data.repositories.filter(r => repoSet.has(r.name)),
+        repositories: data.repositories.filter(r => {
+          // Match explicit repo names
+          if (repoSet.has(r.name)) return true;
+          // Match against patterns
+          return patterns.some(p => matchesPattern(r.name, p));
+        }),
       };
 
       // Recalculate totals
@@ -323,7 +340,7 @@
         prs_merged: filtered.repositories.reduce((sum, r) => sum + (r.activity?.prs_merged || 0), 0),
         issues_opened: filtered.repositories.reduce((sum, r) => sum + (r.activity?.issues_opened || 0), 0),
         issues_closed: filtered.repositories.reduce((sum, r) => sum + (r.activity?.issues_closed || 0), 0),
-        total_stars: filtered.repositories.reduce((sum, r) => sum + (r.state?.stars || 0), 0),
+        total_open: filtered.repositories.reduce((sum, r) => sum + (r.state?.open_issues || 0) + (r.state?.open_prs || 0), 0),
         total_contributors: new Set(filtered.repositories.flatMap(r => r.authors || [])).size,
       };
 
@@ -441,7 +458,7 @@
         { key: 'commits', label: 'Commits' },
         { key: 'prs_merged', label: 'PRs Merged' },
         { key: 'issues_closed', label: 'Issues Closed' },
-        { key: 'total_stars', label: 'Total Stars' },
+        { key: 'total_open', label: 'Open Issues/PRs' },
         { key: 'total_contributors', label: 'Contributors' },
       ];
 
@@ -475,8 +492,11 @@
             return `
               <div class="repo-card">
                 <div class="repo-header">
-                  <a class="repo-name" href="${repo.url}" target="_blank">${repo.name}</a>
-                  ${isActive ? '<span class="active-badge">Active</span>' : ''}
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <a class="repo-name" href="${repo.url}" target="_blank">${repo.name}</a>
+                    ${isActive ? '<span class="active-badge">Active</span>' : ''}
+                  </div>
+                  ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" style="color: var(--text-muted); font-size: 0.875rem; text-decoration: none;">${repo.homepage.replace(/^https?:\/\//, '')}</a>` : ''}
                 </div>
                 ${repo.description ? `<div class="repo-description">${repo.description}</div>` : ''}
                 <div class="repo-stats">
@@ -498,10 +518,9 @@
                       ${repoDiff ? formatDiff(repoDiff.activity?.issues_closed || 0) : ''}
                     </span>
                   ` : ''}
-                  ${!hide.has('stars') ? `
+                  ${!hide.has('open_issues') ? `
                     <span class="repo-stat">
-                      <strong>${repo.state?.stars || 0}</strong> stars
-                      ${repoDiff ? formatDiff(repoDiff.state?.stars || 0) : ''}
+                      <strong>${(repo.state?.open_issues || 0) + (repo.state?.open_prs || 0)}</strong> open issues/PRs
                     </span>
                   ` : ''}
                   ${!hide.has('contributors') ? `
