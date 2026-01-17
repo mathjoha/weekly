@@ -1,7 +1,7 @@
 {
-  "id": "stp",
+  "id": "SecToPat",
   "name": "SecToPat",
-  "description": "Secrets",
+  "description": "Secrets to Patents project repositories",
   "repos": [],
   "patterns": [
     "DigitalHistory-Lund/SecToPat-*"

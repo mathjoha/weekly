@@ -1,16 +1,12 @@
 {
   "templates": [
     {
-      "id": "team-alpha",
-      "name": "Team Alpha"
-    },
-    {
-      "id": "team-beta",
-      "name": "Team Beta"
-    },
-    {
       "id": "ToK",
       "name": "ToK"
+    },
+    {
+      "id": "SecToPat",
+      "name": "SecToPat"
     },
     {
       "id": "SWINNO",
@@ -21,7 +17,7 @@
       "name": "ContentiousGatherings"
     },
     {
-      "id": "jadb",
+      "id": "JADB",
       "name": "JADB"
     }
   ]
