@@ -1,11 +1,11 @@
 {
   "date": "2026-01-17",
-  "fetched_at": "2026-01-17T12:56:07.007372Z",
+  "fetched_at": "2026-01-17T13:15:13.940971Z",
   "totals": {
     "repositories": 60,
-    "commits": 31,
-    "prs_opened": 0,
-    "prs_merged": 0,
+    "commits": 34,
+    "prs_opened": 1,
+    "prs_merged": 1,
     "issues_opened": 7,
     "issues_closed": 2,
     "total_open": 9,
@@ -231,8 +231,8 @@
         "contributors": 2
       },
       "authors": [
-        "M~Johansson",
-        "github-actions[bot]"
+        "github-actions[bot]",
+        "M~Johansson"
       ]
     },
     {
@@ -1125,9 +1125,9 @@
       "homepage": "https://mathjoha.github.io/weekly/",
       "description": "Keeping track of weekly GitHub stats",
       "activity": {
-        "commits": 10,
-        "prs_opened": 0,
-        "prs_merged": 0,
+        "commits": 13,
+        "prs_opened": 1,
+        "prs_merged": 1,
         "issues_opened": 0,
         "issues_closed": 0
       },
@@ -1139,7 +1139,8 @@
         "contributors": 1
       },
       "authors": [
-        "Mathias Johansson"
+        "Mathias Johansson",
+        "github-actions[bot]"
       ]
     },
     {
