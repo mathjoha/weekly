@@ -11,7 +11,7 @@ organizations:
 users:
   - mathjoha
 
-# Whitelist: private repos to explicitly include (owner/repo format)
+# Whitelist: private repos to include (supports glob patterns)
 whitelist:
    - "ContentiousGatherings/*"
 

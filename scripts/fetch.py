@@ -34,15 +34,15 @@ def fetch_repo_data(owner: str, repo: str, config: dict) -> dict:
     """Fetch data for a single repository."""
     headers = get_headers()
     base_url = f"https://api.github.com/repos/{owner}/{repo}"
-    
+
     # Basic repo info
     response = requests.get(base_url, headers=headers)
     response.raise_for_status()
     repo_info = response.json()
-    
+
     # Calculate date window for activity
     since = (datetime.utcnow() - timedelta(days=config.get("activity_window", 7))).isoformat() + "Z"
-    
+
     data = {
         "name": repo_info["full_name"],
         "description": repo_info.get("description"),
@@ -54,7 +54,7 @@ def fetch_repo_data(owner: str, repo: str, config: dict) -> dict:
         "default_branch": repo_info["default_branch"],
         "updated_at": repo_info["updated_at"],
     }
-    
+
     # Recent commits (from default branch + dev + most recently updated branch)
     if "commits" in config.get("metrics", []):
         commits_url = f"{base_url}/commits"
@@ -102,21 +102,28 @@ def fetch_repo_data(owner: str, repo: str, config: dict) -> dict:
         data["commit_authors"] = list(set(
             c["commit"]["author"]["name"] for c in all_commits if c.get("commit", {}).get("author")
         ))
-    
+
     # Recent pull requests
     if "pull_requests" in config.get("metrics", []):
         prs_url = f"{base_url}/pulls"
-        response = requests.get(prs_url, headers=headers, params={"state": "all", "per_page": 100})
+        response = requests.get(
+            prs_url, headers=headers, params={"state": "all", "per_page": 100}
+        )
         if response.status_code == 200:
             prs = response.json()
             recent_prs = [pr for pr in prs if pr["created_at"] >= since]
-            data["prs_opened_this_week"] = len([pr for pr in recent_prs if pr["created_at"] >= since])
-            data["prs_merged_this_week"] = len([
-                pr for pr in recent_prs 
-                if pr.get("merged_at") and pr["merged_at"] >= since
-            ])
+            data["prs_opened_this_week"] = len(
+                [pr for pr in recent_prs if pr["created_at"] >= since]
+            )
+            data["prs_merged_this_week"] = len(
+                [
+                    pr
+                    for pr in recent_prs
+                    if pr.get("merged_at") and pr["merged_at"] >= since
+                ]
+            )
             data["prs_open"] = len([pr for pr in prs if pr["state"] == "open"])
-    
+
     # Recent issues
     if "issues" in config.get("metrics", []):
         issues_url = f"{base_url}/issues"
@@ -124,60 +131,52 @@ def fetch_repo_data(owner: str, repo: str, config: dict) -> dict:
         if response.status_code == 200:
             issues = [i for i in response.json() if "pull_request" not in i]  # Exclude PRs
             data["issues_opened_this_week"] = len([i for i in issues if i["created_at"] >= since])
-            data["issues_closed_this_week"] = len([
-                i for i in issues 
-                if i.get("closed_at") and i["closed_at"] >= since
-            ])
+            data["issues_closed_this_week"] = len(
+                [i for i in issues if i.get("closed_at") and i["closed_at"] >= since]
+            )
             data["issues_open"] = len([i for i in issues if i["state"] == "open"])
-    
+
     # Contributors
     if "contributors" in config.get("metrics", []):
         contributors_url = f"{base_url}/contributors"
-        response = requests.get(contributors_url, headers=headers, params={"per_page": 100})
+        response = requests.get(
+            contributors_url, headers=headers, params={"per_page": 100}
+        )
         if response.status_code == 200:
             data["total_contributors"] = len(response.json())
-    
+
     return data
 
 
-def fetch_org_repos(org: str) -> list[str]:
-    """Fetch all public repository names for an organization."""
+def fetch_all_accessible_repos() -> list[tuple[str, bool]]:
+    """Fetch all repositories the authenticated user has access to."""
     headers = get_headers()
-    url = f"https://api.github.com/orgs/{org}/repos"
+    url = "https://api.github.com/user/repos"
     repos = []
     page = 1
 
+    print("Fetching all accessible repos...")
     while True:
-        response = requests.get(url, headers=headers, params={"per_page": 100, "page": page, "type": "public"})
+        response = requests.get(
+            url,
+            headers=headers,
+            params={
+                "per_page": 100,
+                "page": page,
+                "affiliation": "owner,collaborator,organization_member",
+            },
+        )
         response.raise_for_status()
         page_repos = response.json()
 
         if not page_repos:
             break
 
-        repos.extend([r["full_name"] for r in page_repos if not r["archived"]])
+        repos.extend(
+            [(r["full_name"], r["private"]) for r in page_repos if not r["archived"]]
+        )
         page += 1
-
-    return repos
-
-
-def fetch_user_repos(user: str) -> list[str]:
-    """Fetch all public repository names for a user."""
-    headers = get_headers()
-    url = f"https://api.github.com/users/{user}/repos"
-    repos = []
-    page = 1
-
-    while True:
-        response = requests.get(url, headers=headers, params={"per_page": 100, "page": page, "type": "public"})
-        response.raise_for_status()
-        page_repos = response.json()
-
-        if not page_repos:
-            break
-
-        repos.extend([r["full_name"] for r in page_repos if not r["archived"]])
-        page += 1
+        print(f"  Fetched {len(repos)} repos so far...")
 
     return repos
 
@@ -191,30 +190,40 @@ def main():
     """Main entry point."""
     config = load_config()
     blacklist = config.get("blacklist", [])
-    whitelist = set(config.get("whitelist", []))
+    whitelist = config.get("whitelist", [])
 
-    # Gather all public repos from orgs and users
+    # Build patterns for configured orgs and users
+    orgs = config.get("organizations", [])
+    users = config.get("users", [])
+    owner_patterns = [f"{org}/*" for org in orgs] + [f"{user}/*" for user in users]
+
+    # Fetch all repos the user has access to
+    all_repos_with_visibility = fetch_all_accessible_repos()
+
+    print(f"Total accessible repos: {len(all_repos_with_visibility)}")
+
+    # Filter to repos matching configured orgs/users
     all_repos = set()
+    for repo_name, is_private in all_repos_with_visibility:
+        # Check if repo belongs to a configured org/user
+        if not any(matches_pattern(repo_name, p) for p in owner_patterns):
+            continue
 
-    for org in config.get("organizations", []):
-        print(f"Fetching repos from org: {org}")
-        org_repos = fetch_org_repos(org)
-        all_repos.update(org_repos)
-
-    for user in config.get("users", []):
-        print(f"Fetching repos from user: {user}")
-        user_repos = fetch_user_repos(user)
-        all_repos.update(user_repos)
-
-    # Add whitelisted private repos
-    all_repos.update(whitelist)
+        if not is_private:
+            # Public repos are included by default
+            all_repos.add(repo_name)
+        elif any(matches_pattern(repo_name, pattern) for pattern in whitelist):
+            # Private repos matching whitelist patterns are included
+            all_repos.add(repo_name)
 
     # Remove blacklisted repos (supports patterns)
     all_repos = {
         repo for repo in all_repos
         if not any(matches_pattern(repo, pattern) for pattern in blacklist)
     }
-    
+
+    print(f"Repos after filtering: {len(all_repos)}")
+
     # Fetch data for each repo
     results = []
     for repo_full_name in sorted(all_repos):
@@ -225,17 +234,21 @@ def main():
             results.append(data)
         except requests.HTTPError as e:
             print(f"  Error fetching {repo_full_name}: {e}")
-    
+
     # Save raw results
     output_dir = Path(__file__).parent.parent / "data_raw"
     output_dir.mkdir(exist_ok=True)
-    
+
     with open(output_dir / "raw.json", "w") as f:
-        json.dump({
-            "fetched_at": datetime.utcnow().isoformat() + "Z",
-            "repositories": results,
-        }, f, indent=2)
-    
+        json.dump(
+            {
+                "fetched_at": datetime.utcnow().isoformat() + "Z",
+                "repositories": results,
+            },
+            f,
+            indent=2,
+        )
+
     print(f"Fetched data for {len(results)} repositories")
 
 
