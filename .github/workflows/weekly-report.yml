@@ -3,7 +3,7 @@ name: Weekly Progress Report
 on:
   schedule:
     # Runs every Monday at 9:00 UTC
-    - cron: '0 9 * * 1'
+    - cron: '0 3 * * 1'
   workflow_dispatch: # Allow manual trigger
 
 permissions:
@@ -12,7 +12,7 @@ permissions:
 jobs:
   collect-and-publish:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

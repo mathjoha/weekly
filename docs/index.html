@@ -482,10 +482,35 @@
       const highlight = new Set(template?.metrics?.highlight || []);
       const hide = new Set(template?.metrics?.hide || []);
 
+      // Sort repos: active first, then by PRs, issues, commits, open issues+PRs (descending)
+      const activeRepos = new Set(data.active_repos || []);
+      const sortedRepos = [...data.repositories].sort((a, b) => {
+        // Active repos first
+        const aActive = activeRepos.has(a.name) ? 1 : 0;
+        const bActive = activeRepos.has(b.name) ? 1 : 0;
+        if (aActive !== bActive) return bActive - aActive;
+
+        const aPRs = (a.activity?.prs_opened || 0) + (a.activity?.prs_merged || 0);
+        const bPRs = (b.activity?.prs_opened || 0) + (b.activity?.prs_merged || 0);
+        if (aPRs !== bPRs) return bPRs - aPRs;
+
+        const aIssues = (a.activity?.issues_opened || 0) + (a.activity?.issues_closed || 0);
+        const bIssues = (b.activity?.issues_opened || 0) + (b.activity?.issues_closed || 0);
+        if (aIssues !== bIssues) return bIssues - aIssues;
+
+        const aCommits = a.activity?.commits || 0;
+        const bCommits = b.activity?.commits || 0;
+        if (aCommits !== bCommits) return bCommits - aCommits;
+
+        const aOpen = (a.state?.open_issues || 0) + (a.state?.open_prs || 0);
+        const bOpen = (b.state?.open_issues || 0) + (b.state?.open_prs || 0);
+        return bOpen - aOpen;
+      });
+
       return `
         <h2>Repositories</h2>
         <div class="repo-list">
-          ${data.repositories.map(repo => {
+          ${sortedRepos.map(repo => {
             const repoDiff = diff?.repositories[repo.name];
             const isActive = data.active_repos?.includes(repo.name);
 
