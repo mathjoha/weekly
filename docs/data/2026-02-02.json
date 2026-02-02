@@ -1,0 +1,1302 @@
+{
+  "date": "2026-02-02",
+  "fetched_at": "2026-02-02T04:56:51.775453Z",
+  "totals": {
+    "repositories": 61,
+    "commits": 22,
+    "prs_opened": 0,
+    "prs_merged": 0,
+    "issues_opened": 16,
+    "issues_closed": 2,
+    "total_open": 20,
+    "total_contributors": 1
+  },
+  "active_repos": [
+    "ContentiousGatherings/pilot_2024"
+  ],
+  "repositories": [
+    {
+      "name": "ContentiousGatherings/DH6SWE_prep",
+      "url": "https://github.com/ContentiousGatherings/DH6SWE_prep",
+      "homepage": null,
+      "description": "Preparing some images and examples for DH6SWE",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/Georeferencing",
+      "url": "https://github.com/ContentiousGatherings/Georeferencing",
+      "homepage": null,
+      "description": "https://www.isof.se/utforska/oppna-data/oppna-arkivdata",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/PipelineVisualisation",
+      "url": "https://github.com/ContentiousGatherings/PipelineVisualisation",
+      "homepage": null,
+      "description": "Visualizing the pipeline.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 2
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/annotation-guidelines",
+      "url": "https://github.com/ContentiousGatherings/annotation-guidelines",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 0
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/annotation-setup",
+      "url": "https://github.com/ContentiousGatherings/annotation-setup",
+      "homepage": null,
+      "description": "Config and code for the doccano annotation.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/cg-llm-dashboard",
+      "url": "https://github.com/ContentiousGatherings/cg-llm-dashboard",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/chain-of-thought-test",
+      "url": "https://github.com/ContentiousGatherings/chain-of-thought-test",
+      "homepage": null,
+      "description": "Testing the alternative approach that is chain of thought.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/dashboard-examples",
+      "url": "https://github.com/ContentiousGatherings/dashboard-examples",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/dashboard-mockup",
+      "url": "https://github.com/ContentiousGatherings/dashboard-mockup",
+      "homepage": "https://contentiousgatherings.github.io/dashboard-mockup/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/data-view",
+      "url": "https://github.com/ContentiousGatherings/data-view",
+      "homepage": "https://contentiousgatherings.github.io/data-view/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 2
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/demo-repository",
+      "url": "https://github.com/ContentiousGatherings/demo-repository",
+      "homepage": null,
+      "description": "A code repository designed to show the best GitHub has to offer.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/doccano-report-generator",
+      "url": "https://github.com/ContentiousGatherings/doccano-report-generator",
+      "homepage": null,
+      "description": "For summarising Doccano results.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 3
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/doccano_interface",
+      "url": "https://github.com/ContentiousGatherings/doccano_interface",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 1,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/flowchart",
+      "url": "https://github.com/ContentiousGatherings/flowchart",
+      "homepage": "https://contentiousgatherings.github.io/flowchart/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/fuzzy_nominatim",
+      "url": "https://github.com/ContentiousGatherings/fuzzy_nominatim",
+      "homepage": null,
+      "description": "Vectorizing nominatim names to create a new search index.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/kb-term-trends",
+      "url": "https://github.com/ContentiousGatherings/kb-term-trends",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/misc",
+      "url": "https://github.com/ContentiousGatherings/misc",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 0
+      },
+      "authors": []
+    },
+    {
+      "name": "ContentiousGatherings/pilot_2024",
+      "url": "https://github.com/ContentiousGatherings/pilot_2024",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 22,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 16,
+        "issues_closed": 1
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 17,
+        "open_prs": 0,
+        "contributors": 3
+      },
+      "authors": [
+        "M~Johansson"
+      ]
+    },
+    {
+      "name": "ContentiousGatherings/tidningar",
+      "url": "https://github.com/ContentiousGatherings/tidningar",
+      "homepage": null,
+      "description": "Python wrapper for KB-tidningar API",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 1,
+        "contributors": 2
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/ToK-Preparer",
+      "url": "https://github.com/DigitalHistory-Lund/ToK-Preparer",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/ToK-Reader",
+      "url": "https://github.com/DigitalHistory-Lund/ToK-Reader",
+      "homepage": "https://digitalhistory-lund.github.io/ToK-Reader/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/ToK-explorer",
+      "url": "https://github.com/DigitalHistory-Lund/ToK-explorer",
+      "homepage": "https://digitalhistory-lund.github.io/ToK-explorer/",
+      "description": "Exploring the data for 'Tal om Kvinnor' (ToK).",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 1
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/elam_stm_prep",
+      "url": "https://github.com/DigitalHistory-Lund/elam_stm_prep",
+      "homepage": null,
+      "description": "An attempt at creating an interface between a dymamic python-based pre-processing and the R based stm (Structural Topic Modelling) library.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "DigitalHistory-Lund/kb-trend",
+      "url": "https://github.com/DigitalHistory-Lund/kb-trend",
+      "homepage": "https://digitalhistory-lund.github.io/kb-trend/",
+      "description": "Retrieve page-hit trends from the Swedish National Library's API",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "JobAdsData/HISCOTrend",
+      "url": "https://github.com/JobAdsData/HISCOTrend",
+      "homepage": "https://jobadsdata.github.io/HISCOTrend/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "JobAdsData/JADB-37040",
+      "url": "https://github.com/JobAdsData/JADB-37040",
+      "homepage": "https://jobadsdata.github.io/JADB-37040/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "JobAdsData/YouthTrend",
+      "url": "https://github.com/JobAdsData/YouthTrend",
+      "homepage": "https://jobadsdata.github.io/YouthTrend/",
+      "description": "Some visualisations of advertisements for youth-jobs",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "JobAdsData/jadb-1-timelines",
+      "url": "https://github.com/JobAdsData/jadb-1-timelines",
+      "homepage": "https://jobadsdata.github.io/jadb-1-timelines/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/2023-12-18-ABMM06",
+      "url": "https://github.com/mathjoha/2023-12-18-ABMM06",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/2025-11-21_lab_Moondream_DEMO",
+      "url": "https://github.com/mathjoha/2025-11-21_lab_Moondream_DEMO",
+      "homepage": null,
+      "description": "A notebook for demoing the VLM model Moondream.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/DiffusionDet",
+      "url": "https://github.com/mathjoha/DiffusionDet",
+      "homepage": null,
+      "description": "[ICCV2023 Oral] PyTorch implementation of DiffusionDet (https://arxiv.org/abs/2211.09788)",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/DigitalHistorySweden",
+      "url": "https://github.com/mathjoha/DigitalHistorySweden",
+      "homepage": "https://digital-history.se/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/EAST-Detector-for-text-detection-using-OpenCV",
+      "url": "https://github.com/mathjoha/EAST-Detector-for-text-detection-using-OpenCV",
+      "homepage": null,
+      "description": "Text Detection from images using OpenCV ",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/Kultur_Personalplaneraren",
+      "url": "https://github.com/mathjoha/Kultur_Personalplaneraren",
+      "homepage": "https://mathjoha.github.io/Kultur_Personalplaneraren/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/LDA_playground",
+      "url": "https://github.com/mathjoha/LDA_playground",
+      "homepage": null,
+      "description": "A simple google-colab backed playground for LDA modelling.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/Rectangle",
+      "url": "https://github.com/mathjoha/Rectangle",
+      "homepage": "https://rectangleapp.com",
+      "description": "Move and resize windows on macOS with keyboard shortcuts and snap areas",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 100
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/SOU_LDA_playground",
+      "url": "https://github.com/mathjoha/SOU_LDA_playground",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/VRD_demo_JDH",
+      "url": "https://github.com/mathjoha/VRD_demo_JDH",
+      "homepage": null,
+      "description": "A VRD (Video Reuse Detector) demo program for the Journal of Digital History (JDH)",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 2
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/abmm06",
+      "url": "https://github.com/mathjoha/abmm06",
+      "homepage": "https://mathjoha.github.io/abmm06/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/about",
+      "url": "https://github.com/mathjoha/about",
+      "homepage": "https://mathjoha.se/",
+      "description": "Narcissus' mirror",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/academicons",
+      "url": "https://github.com/mathjoha/academicons",
+      "homepage": null,
+      "description": "quarto extension to use academicons in HTML documents",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 4
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/citadel",
+      "url": "https://github.com/mathjoha/citadel",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/datasette-render-local-images",
+      "url": "https://github.com/mathjoha/datasette-render-local-images",
+      "homepage": null,
+      "description": "A datasette plugin to render images in the local system",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/detectron2",
+      "url": "https://github.com/mathjoha/detectron2",
+      "homepage": "https://detectron2.readthedocs.io/en/latest/",
+      "description": "Detectron2 is a platform for object detection, segmentation and other visual recognition tasks.",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 100
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/devicons",
+      "url": "https://github.com/mathjoha/devicons",
+      "homepage": null,
+      "description": "quarto extensions for devicons",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/freewrite",
+      "url": "https://github.com/mathjoha/freewrite",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/hanoi",
+      "url": "https://github.com/mathjoha/hanoi",
+      "homepage": "https://mathjoha.github.io/hanoi/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/historian_dataset",
+      "url": "https://github.com/mathjoha/historian_dataset",
+      "homepage": null,
+      "description": "Tools to generate, visualize and extend the large-scale historical film dataset",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 2
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/impresso-py",
+      "url": "https://github.com/mathjoha/impresso-py",
+      "homepage": "https://impresso-project.ch",
+      "description": "Impresso Python Library to interact with the Impresso Public API",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 2
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/journal-of-digital-history-jupyter-stack",
+      "url": "https://github.com/mathjoha/journal-of-digital-history-jupyter-stack",
+      "homepage": null,
+      "description": "Image for the journal of digital history",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 4
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/num2words",
+      "url": "https://github.com/mathjoha/num2words",
+      "homepage": null,
+      "description": "Modules to convert numbers to words. 42 --> forty-two",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 100
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/sca",
+      "url": "https://github.com/mathjoha/sca",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/strik-og-kod",
+      "url": "https://github.com/mathjoha/strik-og-kod",
+      "homepage": null,
+      "description": "Learning material for Knit and Code workshop at AU Library. Including scripts, powerpoints and graphics",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 4
+      },
+      "authors": []
+    },
+    {
+      "name": "mathjoha/weekly",
+      "url": "https://github.com/mathjoha/weekly",
+      "homepage": "https://mathjoha.github.io/weekly/",
+      "description": "Keeping track of weekly GitHub stats",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 2
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/datasette-lite",
+      "url": "https://github.com/swinnoproject/datasette-lite",
+      "homepage": "https://lite.datasette.io/?metadata=https://raw.githubusercontent.com/swinnoproject/datasette-lite/refs/heads/main/metadata.yml&url=https://zenodo.org/api/records/13893763/files/SWINNO.UDIT.sqlite3/content",
+      "description": "Metadata file for running SWINNO in Datasette(Lite)",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 1,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/experimental-dashboard",
+      "url": "https://github.com/swinnoproject/experimental-dashboard",
+      "homepage": "https://swinnoproject.github.io/experimental-dashboard/",
+      "description": "Repo for publishing experimental dashboard built with Quarto and OJS",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/living_codebook",
+      "url": "https://github.com/swinnoproject/living_codebook",
+      "homepage": "https://swinnoproject.github.io/living_codebook/",
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/revealjs-theme",
+      "url": "https://github.com/swinnoproject/revealjs-theme",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 0
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/source_organizer",
+      "url": "https://github.com/swinnoproject/source_organizer",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/swinno_revealjs",
+      "url": "https://github.com/swinnoproject/swinno_revealjs",
+      "homepage": null,
+      "description": null,
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    },
+    {
+      "name": "swinnoproject/swinnotools-R",
+      "url": "https://github.com/swinnoproject/swinnotools-R",
+      "homepage": null,
+      "description": "R package of tools to work with SWINNO data",
+      "activity": {
+        "commits": 0,
+        "prs_opened": 0,
+        "prs_merged": 0,
+        "issues_opened": 0,
+        "issues_closed": 0
+      },
+      "state": {
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "open_prs": 0,
+        "contributors": 1
+      },
+      "authors": []
+    }
+  ]
+}
